@@ -41,11 +41,20 @@ const LoginPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <img 
-            className="h-16 w-auto" 
-            src="/logo-seva.png" 
-            alt="Logo SEVA" 
-          />
+          <span className="inline-flex items-center justify-center rounded-full bg-white shadow h-20 w-20">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 40 40"
+              className="h-16 w-16"
+              fill="none"
+            >
+              <rect x="6" y="18" width="28" height="14" rx="2" fill="#2563eb" />
+              <rect x="12" y="24" width="6" height="8" rx="1" fill="#fff" />
+              <rect x="22" y="24" width="6" height="8" rx="1" fill="#fff" />
+              <polygon points="20,6 36,18 4,18" fill="#3b82f6" />
+              <rect x="18" y="28" width="4" height="4" rx="1" fill="#2563eb" />
+            </svg>
+          </span>
         </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Sistema SEVA - Acceso

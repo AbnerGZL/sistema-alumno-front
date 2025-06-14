@@ -155,177 +155,42 @@ const TeacherDashboard = () => {
             </div>
           </div>
         );
-      case 'notas':
-        return (
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-semibold text-gray-800">Registro de Notas</h2>
-              <select className="border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option>Programación Web - Ciclo V</option>
-                <option>Base de Datos - Ciclo IV</option>
-                <option>Algoritmos - Ciclo III</option>
-              </select>
-            </div>
-            
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estudiante</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">DNI</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Práctica</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Teoría</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ponderación</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {estudiantesNotas.map((estudiante) => (
-                    <tr key={estudiante.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{estudiante.nombre}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{estudiante.dni}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <input 
-                          type="number" 
-                          defaultValue={estudiante.practica} 
-                          className="w-16 border border-gray-300 rounded px-2 py-1 text-sm"
-                        />
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <input 
-                          type="number" 
-                          defaultValue={estudiante.teoria} 
-                          className="w-16 border border-gray-300 rounded px-2 py-1 text-sm"
-                        />
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                        {estudiante.ponderacion.toFixed(1)}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${estudiante.estado === 'A' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-                          {estudiante.estado === 'A' ? 'Aprobado' : 'Desaprobado'}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button className="text-blue-600 hover:text-blue-900">Guardar</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            
-            <div className="mt-4 flex justify-between items-center">
-              <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-md text-sm font-medium">
-                Exportar a Excel
-              </button>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-sm font-medium">
-                Guardar todos los cambios
-              </button>
-            </div>
-          </div>
-        );
-      case 'asistencias':
-        return (
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-semibold text-gray-800">Registro de Asistencias</h2>
-              <div className="flex space-x-3">
-                <select className="border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                  <option>Programación Web - Ciclo V</option>
-                  <option>Base de Datos - Ciclo IV</option>
-                  <option>Algoritmos - Ciclo III</option>
-                </select>
-                <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-sm font-medium">
-                  Nueva asistencia
-                </button>
-              </div>
-            </div>
-            
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Curso</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Presentes</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ausentes</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Porcentaje</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {asistencias.map((asistencia) => (
-                    <tr key={asistencia.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date(asistencia.fecha).toLocaleDateString()}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{asistencia.curso}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">{asistencia.presentes}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600 font-medium">{asistencia.ausentes}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{asistencia.total}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        {((asistencia.presentes / asistencia.total) * 100).toFixed(1)}%
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button className="text-blue-600 hover:text-blue-900 mr-3">Editar</button>
-                        <button className="text-red-600 hover:text-red-900">Eliminar</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            
-            <div className="mt-4">
-              <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-md text-sm font-medium">
-                Exportar a Excel
-              </button>
-            </div>
-          </div>
-        );
       case 'perfil':
         return (
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-6">Mi Perfil</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-lg font-medium text-gray-800 mb-4">Información Personal</h3>
-                <div className="space-y-4">
+          <div className="grid bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold text-gray-800 mb-6 w-full">Mi Perfil</h2>
+            <div className="grid">
+              <div className='w-full flex items-center justify-start mb-6'>
+                <h3 className="text-lg font-medium text-gray-800">Información Personal</h3>
+              </div>
+              <div className='flex flex-col md:flex-row justify-between'>
+                <div className="space-y-4 w-full">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Nombres Completos</label>
+                    <label className="block text-sm font-bold text-gray-700">Nombres Completos</label>
                     <p className="mt-1 text-sm text-gray-900">{teacherInfo.nombre}</p>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">DNI</label>
+                    <label className="block text-sm font-bold text-gray-700">DNI</label>
                     <p className="mt-1 text-sm text-gray-900">{teacherInfo.dni}</p>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                    <label className="block text-sm font-bold text-gray-700">Correo Electrónico</label>
                     <p className="mt-1 text-sm text-gray-900">{teacherInfo.correo}</p>
                   </div>
                 </div>
-              </div>
-              <div>
-                <h3 className="text-lg font-medium text-gray-800 mb-4">Información Profesional</h3>
-                <div className="space-y-4">
+                <div className="space-y-4 w-full">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Especialidad</label>
+                    <label className="block text-sm text-gray-700 font-bold">Especialidad</label>
                     <p className="mt-1 text-sm text-gray-900">{teacherInfo.especialidad}</p>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Años de experiencia</label>
+                    <label className="block text-sm font-bold text-gray-700">Años de experiencia</label>
                     <input 
                       type="number" 
                       defaultValue="5" 
                       className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     />
                   </div>
-                </div>
-                <div className="mt-6">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors duration-300">
-                    Actualizar Perfil
-                  </button>
                 </div>
               </div>
             </div>
@@ -339,7 +204,7 @@ const TeacherDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      {/* <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <div className="flex-shrink-0">
@@ -365,7 +230,7 @@ const TeacherDashboard = () => {
             </button>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -375,7 +240,24 @@ const TeacherDashboard = () => {
             <div className="bg-white rounded-lg shadow-md p-4 mb-6">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="flex-shrink-0">
-                  <img className="h-12 w-12 rounded-full" src="/avatar-profesor.png" alt="Avatar" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                  >
+                    <circle cx="24" cy="24" r="24" fill="#2563EB" />
+                    <circle cx="24" cy="18" r="9" fill="#FBBF24" />
+                    <ellipse cx="24" cy="34" rx="13" ry="8" fill="#F3F4F6" />
+                    <ellipse cx="24" cy="34" rx="11" ry="6.5" fill="#E5E7EB" />
+                    <circle cx="24" cy="18" r="7" fill="#FDE68A" />
+                    <ellipse cx="24" cy="34" rx="8" ry="4.5" fill="#FFF" />
+                    <circle cx="24" cy="18" r="5" fill="#F59E42" />
+                    <ellipse cx="24" cy="34" rx="5" ry="2.5" fill="#FBBF24" opacity="0.2" />
+                    <ellipse cx="24" cy="34" rx="3" ry="1.5" fill="#F59E42" opacity="0.2" />
+                  </svg>
+                  {/* <img className="h-12 w-12 rounded-full" src="/avatar-profesor.png" alt="Avatar" /> */}
                 </div>
                 <div>
                   <h2 className="text-lg font-semibold text-gray-800">{teacherInfo.nombre}</h2>
@@ -404,32 +286,6 @@ const TeacherDashboard = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                       </svg>
                       Inicio
-                    </span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setActiveTab('notas')}
-                    className={`w-full text-left px-4 py-2 rounded-md transition-colors duration-300 ${activeTab === 'notas' ? 'bg-blue-100 text-blue-800' : 'text-gray-700 hover:bg-gray-100'}`}
-                  >
-                    <span className="flex items-center">
-                      <svg className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                      Registro de Notas
-                    </span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setActiveTab('asistencias')}
-                    className={`w-full text-left px-4 py-2 rounded-md transition-colors duration-300 ${activeTab === 'asistencias' ? 'bg-blue-100 text-blue-800' : 'text-gray-700 hover:bg-gray-100'}`}
-                  >
-                    <span className="flex items-center">
-                      <svg className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      Control de Asistencias
                     </span>
                   </button>
                 </li>

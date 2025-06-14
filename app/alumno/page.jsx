@@ -13,7 +13,7 @@ const Page = () => {
   const [studentInfo, setStudentInfo] = useState({
     nombre: 'Juan Pérez',
     carrera: 'Ingeniería de Software',
-    ciclo: 'V',
+    ciclo: '5',
     dni: '87654321',
     correo: 'juan.perez@example.edu.pe'
   });
@@ -282,15 +282,15 @@ const Page = () => {
                 <h3 className="text-lg font-medium text-gray-800 mb-4">Información Personal</h3>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Nombres Completos</label>
+                    <label className="block text-sm text-gray-700 font-bold">Nombres Completos</label>
                     <p className="mt-1 text-sm text-gray-900">{studentInfo.nombre}</p>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">DNI</label>
+                    <label className="block text-sm text-gray-700 font-bold">DNI</label>
                     <p className="mt-1 text-sm text-gray-900">{studentInfo.dni}</p>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                    <label className="block text-sm text-gray-700 font-bold">Correo Electrónico</label>
                     <p className="mt-1 text-sm text-gray-900">{studentInfo.correo}</p>
                   </div>
                 </div>
@@ -299,18 +299,13 @@ const Page = () => {
                 <h3 className="text-lg font-medium text-gray-800 mb-4">Información Académica</h3>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Carrera</label>
+                    <label className="block text-sm text-gray-700 font-bold">Carrera</label>
                     <p className="mt-1 text-sm text-gray-900">{studentInfo.carrera}</p>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Ciclo Actual</label>
+                    <label className="block text-sm text-gray-700 font-bold">Ciclo Actual</label>
                     <p className="mt-1 text-sm text-gray-900">{studentInfo.ciclo}</p>
                   </div>
-                </div>
-                <div className="mt-6">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors duration-300">
-                    Editar Perfil
-                  </button>
                 </div>
               </div>
             </div>
@@ -324,7 +319,7 @@ const Page = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      {/* <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <div className="flex-shrink-0">
@@ -350,7 +345,7 @@ const Page = () => {
             </button>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -360,14 +355,30 @@ const Page = () => {
             <div className="bg-white rounded-lg shadow-md p-4 mb-6">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="flex-shrink-0">
-                  <img className="h-12 w-12 rounded-full" src="/avatar.png" alt="Avatar" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 48 48"
+                    className="h-12 w-12 rounded-full"
+                  >
+                    <circle cx="24" cy="24" r="24" fill="#e0e7ef" />
+                    <circle cx="24" cy="18" r="9" fill="#90caf9" />
+                    <ellipse cx="24" cy="36" rx="13" ry="8" fill="#64b5f6" />
+                    <ellipse cx="24" cy="36" rx="10" ry="6" fill="#bbdefb" />
+                    <circle cx="24" cy="20" r="7" fill="#fff" />
+                    <ellipse cx="24" cy="34" rx="8" ry="5" fill="#fff" />
+                    <circle cx="24" cy="20" r="6" fill="#fbc02d" />
+                    <ellipse cx="24" cy="34" rx="7" ry="4" fill="#ffe082" />
+                    <ellipse cx="24" cy="19" rx="3" ry="4" fill="#fffde7" opacity="0.5" />
+                    <ellipse cx="20" cy="18" rx="1.2" ry="2" fill="#fff" opacity="0.7" />
+                    <ellipse cx="28" cy="18" rx="1.2" ry="2" fill="#fff" opacity="0.7" />
+                  </svg>
                 </div>
                 <div>
                   <h2 className="text-lg font-semibold text-gray-800">{studentInfo.nombre}</h2>
                   <p className="text-sm text-gray-500">{studentInfo.carrera}</p>
                 </div>
               </div>
-              <div className="border-t border-gray-200 pt-4">
+              <div className="flex border-t border-gray-200 pt-4 items-center">
                 <p className="text-sm text-gray-600 flex items-center">
                   <svg className="h-4 w-4 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
