@@ -65,7 +65,7 @@ const TeacherDashboard = () => {
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ciclo</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estudiantes</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Horario</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                      {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th> */}
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
@@ -77,10 +77,10 @@ const TeacherDashboard = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{curso.ciclo}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{curso.estudiantes}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{curso.horario}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                           <button 
                             onClick={() => setActiveTab('notas')}
-                            className="text-blue-600 hover:text-blue-900 mr-3"
+                            className="text-gray-500 hover:text-gray-900 mr-3"
                           >
                             Notas
                           </button>
@@ -90,7 +90,7 @@ const TeacherDashboard = () => {
                           >
                             Asistencia
                           </button>
-                        </td>
+                        </td> */}
                       </tr>
                     ))}
                   </tbody>
@@ -116,7 +116,7 @@ const TeacherDashboard = () => {
                     </div>
                     <div className="mt-2 w-full bg-gray-200 rounded-full h-2">
                       <div 
-                        className="bg-blue-600 h-2 rounded-full" 
+                        className="bg-gray-600 h-2 rounded-full" 
                         style={{ width: `${(asistencia.presentes / asistencia.total) * 100}%` }}
                       ></div>
                     </div>
@@ -124,8 +124,8 @@ const TeacherDashboard = () => {
                 ))}
               </div>
               <button 
-                onClick={() => setActiveTab('asistencias')}
-                className="mt-4 text-blue-600 hover:text-blue-800 text-sm font-medium"
+                onClick={() => setActiveTab('inicio')}
+                className="mt-4 text-gray-600 hover:text-gray-800 text-sm font-medium"
               >
                 Ver todos los registros →
               </button>
@@ -247,15 +247,11 @@ const TeacherDashboard = () => {
                     viewBox="0 0 48 48"
                     fill="none"
                   >
-                    <circle cx="24" cy="24" r="24" fill="#2563EB" />
+                    <circle cx="24" cy="24" r="24" fill="#505050" />
                     <circle cx="24" cy="18" r="9" fill="#FBBF24" />
                     <ellipse cx="24" cy="34" rx="13" ry="8" fill="#F3F4F6" />
-                    <ellipse cx="24" cy="34" rx="11" ry="6.5" fill="#E5E7EB" />
                     <circle cx="24" cy="18" r="7" fill="#FDE68A" />
-                    <ellipse cx="24" cy="34" rx="8" ry="4.5" fill="#FFF" />
                     <circle cx="24" cy="18" r="5" fill="#F59E42" />
-                    <ellipse cx="24" cy="34" rx="5" ry="2.5" fill="#FBBF24" opacity="0.2" />
-                    <ellipse cx="24" cy="34" rx="3" ry="1.5" fill="#F59E42" opacity="0.2" />
                   </svg>
                   {/* <img className="h-12 w-12 rounded-full" src="/avatar-profesor.png" alt="Avatar" /> */}
                 </div>
@@ -279,7 +275,7 @@ const TeacherDashboard = () => {
                 <li>
                   <button
                     onClick={() => setActiveTab('inicio')}
-                    className={`w-full text-left px-4 py-2 rounded-md transition-colors duration-300 ${activeTab === 'inicio' ? 'bg-blue-100 text-blue-800' : 'text-gray-700 hover:bg-gray-100'}`}
+                    className={`w-full text-left px-4 py-2 rounded-md transition-colors duration-300 ${activeTab === 'inicio' ? 'bg-gray-200 text-gray-800' : 'text-gray-700 hover:bg-gray-100'}`}
                   >
                     <span className="flex items-center">
                       <svg className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -292,7 +288,7 @@ const TeacherDashboard = () => {
                 <li>
                   <button
                     onClick={() => setActiveTab('perfil')}
-                    className={`w-full text-left px-4 py-2 rounded-md transition-colors duration-300 ${activeTab === 'perfil' ? 'bg-blue-100 text-blue-800' : 'text-gray-700 hover:bg-gray-100'}`}
+                    className={`w-full text-left px-4 py-2 rounded-md transition-colors duration-300 ${activeTab === 'perfil' ? 'bg-gray-200 text-gray-800' : 'text-gray-700 hover:bg-gray-100'}`}
                   >
                     <span className="flex items-center">
                       <svg className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -309,7 +305,7 @@ const TeacherDashboard = () => {
           {/* Content Area */}
           <div className="flex-1">
             {/* Welcome Banner */}
-            <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-md p-6 mb-6 text-white">
+            <div className="bg-gradient-to-r bg-gray-500 to-gray-800 rounded-lg shadow-md p-6 mb-6 text-white">
               <h2 className="text-2xl font-bold mb-2">¡Bienvenido, Prof. {teacherInfo.nombre.split(' ')[0]}!</h2>
               <p className="opacity-90">Gestiona tus cursos, registra notas y asistencias desde tu panel.</p>
             </div>

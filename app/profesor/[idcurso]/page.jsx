@@ -54,7 +54,7 @@ const TeacherDashboard = () => {
           <div className="bg-white rounded-lg shadow-md p-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-semibold text-gray-800">Registro de Notas</h2>
-              <select className="border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select className="border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500">
                 <option>Programación Web - Ciclo V</option>
                 <option>Base de Datos - Ciclo IV</option>
                 <option>Algoritmos - Ciclo III</option>
@@ -71,13 +71,15 @@ const TeacherDashboard = () => {
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Teoría</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ponderación</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                    {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th> */}
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {estudiantesNotas.map((estudiante) => (
                     <tr key={estudiante.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{estudiante.nombre}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button className="text-gray-600 hover:text-gray-900 hover:underline focus:outline-2 focus:outline-gray-900 focus:outline-offset-4 rounded-sm">{estudiante.nombre}</button>
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{estudiante.dni}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <input 
@@ -101,9 +103,9 @@ const TeacherDashboard = () => {
                           {estudiante.estado === 'A' ? 'Aprobado' : 'Desaprobado'}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button className="text-blue-600 hover:text-blue-900">Editar</button>
-                      </td>
+                      {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button className="text-gray-600 hover:text-gray-400">Editar</button>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
@@ -123,12 +125,12 @@ const TeacherDashboard = () => {
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-semibold text-gray-800">Registro de Asistencias</h2>
               <div className="flex space-x-3">
-                <select className="border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select className="border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500">
                   <option>Programación Web - Ciclo V</option>
                   <option>Base de Datos - Ciclo IV</option>
                   <option>Algoritmos - Ciclo III</option>
                 </select>
-                <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-sm font-medium">
+                <button className="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-md text-sm font-medium">
                   Nueva asistencia
                 </button>
               </div>
@@ -139,15 +141,34 @@ const TeacherDashboard = () => {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Datos</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {asistencias.map((asistencia) => (
                     <tr key={asistencia.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date(asistencia.fecha).toLocaleDateString()}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button className="text-blue-600 hover:text-blue-900 mr-3">Editar</button>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <button className="text-gray-600 hover:text-gray-900 hover:underline focus:outline-2 focus:outline-gray-900 focus:outline-offset-4 rounded-sm">{new Date(asistencia.fecha).toLocaleDateString()}</button>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 font-medium flex justify-evenly">
+                        <div className='flex items-center space-x-2 justify-evenly'>
+                          <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800`}>
+                            Asistencias:
+                          </span>
+                          <p>2</p>
+                        </div>
+                        <div className='flex items-center space-x-2 justify-evenly'>
+                          <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800`}>
+                            Faltas:
+                          </span>
+                          <p>2</p>
+                        </div>
+                        <div className='flex items-center space-x-2 justify-evenly'>
+                          <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 text-amber-800`}>
+                            Tardanzas:
+                          </span>
+                          <p>2</p>
+                        </div>                                                
                       </td>
                     </tr>
                   ))}
@@ -179,15 +200,11 @@ const TeacherDashboard = () => {
                     viewBox="0 0 48 48"
                     fill="none"
                   >
-                    <circle cx="24" cy="24" r="24" fill="#2563EB" />
+                    <circle cx="24" cy="24" r="24" fill="#505050" />
                     <circle cx="24" cy="18" r="9" fill="#FBBF24" />
                     <ellipse cx="24" cy="34" rx="13" ry="8" fill="#F3F4F6" />
-                    <ellipse cx="24" cy="34" rx="11" ry="6.5" fill="#E5E7EB" />
                     <circle cx="24" cy="18" r="7" fill="#FDE68A" />
-                    <ellipse cx="24" cy="34" rx="8" ry="4.5" fill="#FFF" />
                     <circle cx="24" cy="18" r="5" fill="#F59E42" />
-                    <ellipse cx="24" cy="34" rx="5" ry="2.5" fill="#FBBF24" opacity="0.2" />
-                    <ellipse cx="24" cy="34" rx="3" ry="1.5" fill="#F59E42" opacity="0.2" />
                   </svg>
                   {/* <img className="h-12 w-12 rounded-full" src="/avatar-profesor.png" alt="Avatar" /> */}
                 </div>
@@ -211,7 +228,7 @@ const TeacherDashboard = () => {
                 <li>
                   <button
                     onClick={() => setActiveTab('notas')}
-                    className={`w-full text-left px-4 py-2 rounded-md transition-colors duration-300 ${activeTab === 'notas' ? 'bg-blue-100 text-blue-800' : 'text-gray-700 hover:bg-gray-100'}`}
+                    className={`w-full text-left px-4 py-2 rounded-md transition-colors duration-300 ${activeTab === 'notas' ? 'bg-gray-200 text-gray-800' : 'text-gray-700 hover:bg-gray-100'}`}
                   >
                     <span className="flex items-center">
                       <svg className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -224,7 +241,7 @@ const TeacherDashboard = () => {
                 <li>
                   <button
                     onClick={() => setActiveTab('asistencias')}
-                    className={`w-full text-left px-4 py-2 rounded-md transition-colors duration-300 ${activeTab === 'asistencias' ? 'bg-blue-100 text-blue-800' : 'text-gray-700 hover:bg-gray-100'}`}
+                    className={`w-full text-left px-4 py-2 rounded-md transition-colors duration-300 ${activeTab === 'asistencias' ? 'bg-gray-200 text-gray-800' : 'text-gray-700 hover:bg-gray-100'}`}
                   >
                     <span className="flex items-center">
                       <svg className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
