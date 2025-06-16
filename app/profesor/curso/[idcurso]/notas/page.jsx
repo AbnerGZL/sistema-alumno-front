@@ -2,8 +2,12 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Modal from '../../../../../components/Modal';
 
 export default function CargarNotasEstudiante() {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { idCurso, idEstudiante } = useParams();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -98,13 +102,14 @@ export default function CargarNotasEstudiante() {
 
   const alerta = () => {
     alert("Solo podrá subir las notas una vez, asegúrese de que los datos sean correctos.");
+    setIsModalOpen(true)
   }
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="text-center">
-          <svg className="animate-spin mx-auto h-12 w-12 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <svg className="animate-spin mx-auto h-12 w-12 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
@@ -116,7 +121,7 @@ export default function CargarNotasEstudiante() {
 
   if (!curso || !estudiante) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="text-center">
           <svg className="mx-auto h-12 w-12 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -128,19 +133,19 @@ export default function CargarNotasEstudiante() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-8 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="bg-white shadow-lg rounded-lg">
           {/* Header */}
-          <div className="flex bg-gray-500 px-10 py-7 items-center">
+          <div className="flex bg-gray-600 px-10 py-5 items-center sticky top-0 transition-all z-10 rounded-t-lg">
             <div className='block'>
               <h1 className="text-2xl font-bold text-white">{curso.nombre} - {curso.codigo}</h1>
-              <p className="text-blue-100">Créditos: {curso.creditos} | Ciclo: {curso.ciclo}</p>
+              <p className="text-gray-100">Créditos: {curso.creditos} | Ciclo: {curso.ciclo}</p>
             </div>
             <div className="ml-auto flex items-center">
               <button 
                 onClick={() => router.push(`/dashboard/teacher/cursos/${idCurso}`)}
-                className='flex items-center justify-center active:bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-3xl transition duration-200'
+                className='flex items-center justify-center active:bg-gray-500 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-3xl transition duration-200'
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +181,7 @@ export default function CargarNotasEstudiante() {
             {/* Información del estudiante */}
             <div className="bg-gray-50 rounded-lg p-6">
               <div className="flex items-center mb-4">
-                <svg className="h-6 w-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-6 w-6 text-gray-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
                 <h2 className="text-xl font-semibold text-gray-800">Información del Estudiante</h2>
@@ -207,14 +212,14 @@ export default function CargarNotasEstudiante() {
               <div className="bg-gray-50 rounded-lg p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className='flex items-center'>
-                    <svg className="h-6 w-6 text-blue-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-6 w-6 text-gray-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                     <h2 className="text-xl font-semibold text-gray-800">Registro de Notas</h2>
                   </div>
                   <button
                     type='button'
-                    className='inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 active:ring-3 active:ring-offset-2 active:ring-blue-700 transition'
+                    className='inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 active:ring-3 active:ring-offset-2 active:ring-gray-700 transition'
                     onClick={alerta}
                   >
                     Cargar Nota
@@ -222,7 +227,7 @@ export default function CargarNotasEstudiante() {
                   {/* <button
                     type="submit"
                     disabled={loading}
-                    className={`inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+                    className={`inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 ${
                       loading ? 'opacity-75 cursor-not-allowed' : ''
                     }`}
                   >
@@ -279,7 +284,7 @@ export default function CargarNotasEstudiante() {
                   <tbody className="bg-white divide-y divide-gray-200">
                       <tr className='hover:bg-gray-50'>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          10
+                          Teoría 1
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           20
@@ -307,7 +312,7 @@ export default function CargarNotasEstudiante() {
                           value={nota.valor || ''}
                           onChange={(e) => handleNotaChange(nota.id, e.target.value)}
                           disabled={!nota.editable || loading}
-                          className="py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm"
+                          className="py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 block w-full sm:text-sm"
                           placeholder={`0 - ${nota.max}`}
                         />
                         <span className="text-sm text-gray-500">/ {nota.max}</span>
@@ -329,14 +334,6 @@ export default function CargarNotasEstudiante() {
                 </div> */}
 
                 <div className="mt-6 flex justify-end space-x-3">
-                  <button
-                    type="button"
-                    onClick={() => router.push(`/dashboard/teacher/cursos/${idCurso}`)}
-                    disabled={loading}
-                    className="py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                  >
-                    Cancelar
-                  </button>
                 </div>
               </div>
             </form>
@@ -350,6 +347,39 @@ export default function CargarNotasEstudiante() {
           </div>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <h2 className="text-xl font-semibold mb-4 text-gray-600">Registrar notas</h2>
+        <div className='text-gray-600 m-3 flex items-center justify-between'>
+          <label htmlFor="" className='w-full'>Práctica</label>
+          <input type="number" className='w-full border-2 p-1 border-gray-600 rounded-md'/>
+        </div>
+        <div className='text-gray-600 m-3 flex items-center justify-between'>
+          <label htmlFor="" className='w-full'>Teoría</label>
+          <input type="number" className='w-full border-2 p-1 border-gray-600 rounded-md'/>
+        </div>
+        <div className='w-full flex justify-end mt-5 px-3 gap-3'>
+          {/* <button
+            className="bg-gray-600 text-white px-4 py-2 rounded"
+            onClick={() => setIsModalOpen(false)}
+          >
+            Cerrar
+          </button> */}
+          <button
+            type="button"
+            disabled={loading}
+            onClick={() => setIsModalOpen(false)}
+            className="py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          >
+            Cancelar
+          </button>
+          <button
+            type='button'
+            className='inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 active:ring-3 active:ring-offset-2 active:ring-gray-700 transition'
+          >
+            Cargar Nota
+          </button>          
+        </div>
+      </Modal>
     </div>
   );
 }

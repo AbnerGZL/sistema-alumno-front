@@ -71,14 +71,14 @@ const LoginPage = () => {
             <button
               type="button"
               onClick={() => setRole('student')}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${role === 'student' ? 'bg-white shadow text-blue-700' : 'text-gray-700 hover:text-gray-900'}`}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 ${role === 'student' ? 'focus:ring-blue-500 bg-white shadow text-blue-700' : 'text-gray-700 hover:text-gray-900'}`}
             >
               Estudiante
             </button>
             <button
               type="button"
               onClick={() => setRole('teacher')}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${role === 'teacher' ? 'bg-white shadow text-blue-700' : 'text-gray-700 hover:text-gray-900'}`}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 ${role === 'teacher' ? 'focus:ring-gray-500 bg-white shadow text-gray-700' : 'text-gray-700 hover:text-gray-900'}`}
             >
               Profesor
             </button>
@@ -175,7 +175,7 @@ const LoginPage = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}
+                className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${role === 'student' ? 'bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' : 'bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'} ${isLoading ? 'opacity-75 cursor-not-allowed' : ''}`}
               >
                 {isLoading ? (
                   <>

@@ -124,16 +124,6 @@ const TeacherDashboard = () => {
           <div className="bg-white rounded-lg shadow-md p-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-semibold text-gray-800">Registro de Asistencias</h2>
-              <div className="flex space-x-3">
-                <select className="border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500">
-                  <option>Programación Web - Ciclo V</option>
-                  <option>Base de Datos - Ciclo IV</option>
-                  <option>Algoritmos - Ciclo III</option>
-                </select>
-                <button className="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-md text-sm font-medium">
-                  Nueva asistencia
-                </button>
-              </div>
             </div>
             
             <div className="overflow-x-auto">
@@ -155,20 +145,20 @@ const TeacherDashboard = () => {
                           <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800`}>
                             Asistencias:
                           </span>
-                          <p>2</p>
+                          <p>0</p>
                         </div>
                         <div className='flex items-center space-x-2 justify-evenly'>
                           <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800`}>
                             Faltas:
                           </span>
-                          <p>2</p>
+                          <p>0</p>
                         </div>
                         <div className='flex items-center space-x-2 justify-evenly'>
                           <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 text-amber-800`}>
                             Tardanzas:
                           </span>
-                          <p>2</p>
-                        </div>                                                
+                          <p>0</p>
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -223,7 +213,7 @@ const TeacherDashboard = () => {
               </div>
             </div>
 
-            <nav className="bg-white rounded-lg shadow-md p-4">
+            <nav className="bg-white rounded-lg shadow-md p-4 sticky top-10 left-0 w-64">
               <ul className="space-y-2">
                 <li>
                   <button

@@ -71,10 +71,12 @@ export default function CursoDetalleAlumno() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-8 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+      <div className="max-w-5xl mx-auto rounded-b-lg">
+        {/* <div className="bg-white shadow-lg rounded-lg overflow-hidden"> */}
+        <div className="bg-white shadow-lg rounded-lg">
+
           {/* Header del curso */}
-          <div className="flex bg-blue-600 px-10 py-7 items-center">
+          <div className="flex bg-blue-600 px-10 py-5 items-center sticky top-0 transition-all z-10 rounded-t-lg">
             <div className='block'>
               <h1 className="text-2xl font-bold text-white">{curso.titulo}</h1>
               <p className="text-blue-100">Profesor: {curso.profesor}</p>
