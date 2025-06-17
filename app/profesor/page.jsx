@@ -71,7 +71,9 @@ const TeacherDashboard = () => {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {cursos.map((curso) => (
                       <tr key={curso.id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{curso.codigo}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <button className="text-gray-600 hover:text-gray-900 hover:underline focus:outline-2 focus:outline-gray-900 focus:outline-offset-4 rounded-sm">{curso.codigo}</button>
+                        </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{curso.nombre}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{curso.carrera}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{curso.ciclo}</td>
