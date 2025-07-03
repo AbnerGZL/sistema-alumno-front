@@ -61,8 +61,18 @@ export default function CargarNotasEstudiante() {
       console.log("No se pudo cargar la nota: " + error);
     } finally {
       setLoading(false);
+      setUnidad(1);
+      setNotaPractica('');
+      setNotaTeoria('');
     }
   };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setNotaPractica('');
+    setNotaTeoria('');
+    setUnidad(1);
+  }
 
       
   const alerta = () => {
@@ -187,7 +197,7 @@ export default function CargarNotasEstudiante() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-700 font-bold">Ciclo</p>
-                  <p className="font-medium text-gray-500">{estudiante?.MATRICULA?.CICLO}</p>
+                  <p className="font-medium text-gray-500">{estudiante?.MATRICULA?.CICLO}°</p>
                 </div>
               </div>
             </div>
@@ -316,7 +326,7 @@ export default function CargarNotasEstudiante() {
           </div>
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
       <form onSubmit={handleSubmit}>
         <h2 className="text-xl font-semibold mb-4 text-gray-600">
           <svg
@@ -366,7 +376,7 @@ export default function CargarNotasEstudiante() {
             value={unidad}
             onChange={(e) => setUnidad(+e.target.value)}
             >
-            {[1, 2, 3, 4, 5, 6].map(n => (
+            {[1, 2, 3, 4].map(n => (
               <option key={n} value={n}>{n}</option>
             ))}
           </select>
