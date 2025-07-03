@@ -15,7 +15,7 @@ const Login = async (role, code, password, recuerdame) => {
         USUARIO: roleFormat,
         CODIGO: codeFormat,
         CONTRASEÑA: passwordFormat,
-        RECUERDAMTE: recuerdame
+        RECUERDAME: recuerdame
       })
     })
     return response;
