@@ -23,7 +23,7 @@ const formLogin = () => {
     try {
       await new Promise(resolve => setTimeout(resolve, 500));
       const response = await lib.Login(role, code, password, recuerdame);
-      const login = await response.json();
+      await response.json();
       if (response.ok) {
         setIsVerified(true);
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -167,7 +167,7 @@ const formLogin = () => {
                   id="remember-me"
                   name="remember-me"
                   value={recuerdame}
-                  onChange={(e) => setRecuerdame(e.target.value)}
+                  onChange={(e) => setRecuerdame(e.target.checked)}
                   type="checkbox"
                   className={`h-4 w-4  border-gray-300 rounded cursor-pointer ${role==='ESTUDIANTE' ? 'accent-blue-600' : 'accent-gray-600'}`}
                 />
